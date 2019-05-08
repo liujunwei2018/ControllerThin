@@ -2,10 +2,13 @@
 控制器瘦身
 
 csdn: https://blog.csdn.net/ljw2017/article/details/89950541
+
 主要内容
+
         在使用 tableView 视图的控制器中, 需要实现 UITableViewDelegate 和 UITableViewDataSource , 本文主要说明了如何将 UITableViewDataSource 相关方法从 ViewController 中分离开,以及让TableViewCell 和 模型分离。
 
 实现思路
+
 创建一个继承NSObject的类,实现 UITableViewDataSource 相关数据源方法 
 提供实例化方法,能够获取模型数据,cell复用ID,自定义 cell类,提供回调block配置cell
 创建自定义cell 的分类,提供方法接收模型,配置cell 显示数据
