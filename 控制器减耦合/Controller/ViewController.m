@@ -15,6 +15,7 @@
 @interface ViewController () <UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray *items;
+// 需要持有一个 TestTableViewDataSource, 如果只是在方法中声明为局部变量,会提前销毁导致无法执行tableView数据源方法
 @property (nonatomic, strong) TestTableViewDataSource *dataSource;
 
 @end
@@ -23,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // 对cell 进行配置, 在 TestTableViewDataSource 中调用 cellForRowAtIndexPath 方法时执行
     TableViewCellConfigureBlock cellConfigureBlock = ^(TestTableViewCell *cell, TestModel *model) {
         [cell configCellWithModel:model];
     };

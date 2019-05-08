@@ -20,11 +20,11 @@ typedef void(^TableViewCellConfigureBlock)(id cell, id item);
 
  @param anItems 模型数据数组
  @param aCellIdentifier cell复用ID
+ @param aCellClass 自定义cell 的类型
  @param aConfigureCellBlock cell配置回调
  */
 - (instancetype)initWithItems:(NSArray *)anItems cellIdentifier:(NSString *)aCellIdentifier cellClass:(Class)aCellClass configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
-- (Class)configcellClass;
 @end
 
 NS_ASSUME_NONNULL_END

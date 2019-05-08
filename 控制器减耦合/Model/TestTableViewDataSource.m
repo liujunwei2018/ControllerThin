@@ -7,12 +7,12 @@
 //
 
 #import "TestTableViewDataSource.h"
-// 导入自定义的cell
 
 @interface TestTableViewDataSource ()
 @property (nonatomic, copy) NSArray *items;
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
+// 获得 cell 类名称,这样就不需要导入 TestTableViewCell.h
 @property (nonatomic, strong) Class cls;
 
 @end
@@ -40,9 +40,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     if (!cell) {
+        // 创建 self.cls 类型的 cell
         cell = [[self.cls alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
     }
     id item = self.items[indexPath.row];
+    // 执行配置cell的方法(分类中)
     self.configureCellBlock(cell, item);
     
     return cell;
