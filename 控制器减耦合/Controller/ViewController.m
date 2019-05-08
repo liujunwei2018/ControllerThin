@@ -30,19 +30,18 @@
     };
     
     self.dataSource = [[TestTableViewDataSource alloc] initWithItems:self.items cellIdentifier:@"kcellID" cellClass:[TestTableViewCell class] configureCellBlock:cellConfigureBlock];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.delegate = self;
+    // 设置数据源代理为 self.dataSource
     self.tableView.dataSource = self.dataSource;
     
     [self.view addSubview:self.tableView];
 }
 
-
-- (UITableView *)tableView {
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor whiteColor];
-        _tableView.delegate = self;
-    }
-    return _tableView;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%d",(int)indexPath.row);
 }
 
 - (NSArray *)items {
